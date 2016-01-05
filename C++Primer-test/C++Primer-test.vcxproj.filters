@@ -18,9 +18,18 @@
     <ClInclude Include="Primer_test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C_traps_and_defects.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Primer_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C_traps_and_defects.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

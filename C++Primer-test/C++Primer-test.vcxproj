@@ -78,9 +78,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="C_traps_and_defects.h" />
     <ClInclude Include="Primer_test.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="C_traps_and_defects.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Primer_test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
