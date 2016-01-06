@@ -31,18 +31,22 @@ void C_traps_and_defects::blank_space(){
 	std::cout << a << b << d << std::endl;//2 1 2
 }
 
+
 void C_traps_and_defects::default_data(){
 
+	//*************进制默认
 	int a = 010; //以0开头的数据都是会认为是8进制的
 	std::cout << a << std::endl;//输出为8
 
 	std::cout << sizeof(a) << std::endl; //输出为4(此计算机为X64)
 
-	
+
+
 	//******************关于优先级的注意点
 	// ！=  优先于&，| bit操作符
 	bool aa = true, b = false;
 	if (aa&b != 0){} //结果会是( a & (b != 0))
+
 
 	//****************关于连等于的值确定
 	int c = 1, d = 2, f = 3;
@@ -51,7 +55,24 @@ void C_traps_and_defects::default_data(){
 	std::cout << c << d << f << std::endl;
 	//输出为1 1 1，VS编译器是用最后的一个值
 
+
+	//*****************unsigned 和signed类型char使用：
+	char cc = 0x80;
+	printf("%x,%d\n", cc,sizeof(cc)); //输出为0xFFFFFF80，1（存的还是一个字节）
+	//作为一个char类型，会默认为signed类型的
+	//然后对于signed，会自动扩展的
+	//对于下面的赋值，赋的是0xFFFFFF80（signed char最高位不为1，则不改变）
+	//若是signed最高位为1，前面全补上1 
+	int aa_int = cc;
+	printf("%x,%x\n", cc,aa_int);
+
+	cc = cc >> 1;
+	aa_int = cc<<1;
+	printf("%x,%x", cc, aa_int); //VS signed char右移，符号位不变
+
 }
+
+
 void C_traps_and_defects::kinds_technique(){
 	
 	void (*p)(char*);//函数指针定义形式
@@ -65,14 +86,14 @@ void C_traps_and_defects::kinds_technique(){
 	void fun(char *);
 
 	p = fun;
-	p("function");
-	(*p)("function");
+	p("function");//
+	(*p)("function");//
 
 	p = &fun;
 	char *ch = "fff";
-	p(ch);
+	p(ch);//
 
-	(*p)(ch);//三种目的同
+	(*p)(ch);//四种方式同等效果
 
 	//typedef void(*(funcptr))();
 	//(*(funcptr)0)(); //感觉并没有申明卵用，说到底就是一个强转而已，执行时崩
@@ -90,9 +111,48 @@ void C_traps_and_defects::kinds_technique(){
 	//signal函数参数有两个，一个int型，一个void(*)(int *)的函数指针
 
 	
-
-
 }
 void fun(char* ch){
 	std::cout << ch << std::endl;
 }
+
+//need cstdio
+void C_traps_and_defects::IO_problem(){
+	
+	char buf[BUFSIZ];
+	setbuf(stdout, buf);
+	//函数功能：使用buf暂时存储要输出的字符，等到后面fflush或者结束前输出
+	//日狗，VS默认禁用此函数,使用#pragma warning( disable : 4996)强行允许
+	printf("wahahahahahaha");
+
+	char * chp = new char[100];
+	setbuf(stdout, chp);
+
+	printf("wahahahhhhhhhhhhhhhhhhhhh");
+	std::cout << "wahahahahahahah  wahahahahahaha" ;
+	//尽管setbuf是针对C语言的输出，但是也兼容C++的输出
+	std::cout << std::endl;//此行代码与fflush功能类似
+	printf("wahahahhhhhhhhhhhhhhhhhhh");
+
+	delete[] chp;//若在此处delete，则输出的是一堆不知道什么的东东
+	chp = 0;
+	fflush(stdout);
+	//保证在此函数之前的数据要完好，so最好还是加上这个函数比较安全
+	//delete[] chp;//没事
+	//chp = 0;
+	
+}
+
+void C_traps_and_defects::paramaters_define(){
+
+	//不要随便用++i，i++之类的作为宏的参数传递
+	//i++传参时传递的是i的值，调用后i才加1
+
+	//在有宏参与的if语句要严格格式，不能偷工减料（大括号之类的东东）
+
+	//类型定义还是要用typedef，不要用define
+
+
+
+}
+
