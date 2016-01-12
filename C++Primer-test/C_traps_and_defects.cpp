@@ -152,7 +152,39 @@ void C_traps_and_defects::paramaters_define(){
 
 	//类型定义还是要用typedef，不要用define
 
+}
 
+void C_traps_and_defects::type_cast(){
+
+	//func_type_函数
+
+	//*****************还可以这样的~~
+	"0123456789"[2]; // 就问你6不6
+
+
+	//****************取余数时结果：
+	int re = (-16) % 7;	//输出为-2
+	int res = (-16) % (-7);	//输出为-2
+	int ress = 16 % -7;	//输出为2
+	std::cout << re << res << ress << std::endl;
+	//总结：在计算余数时，前面的数的正负决定余数的正负
+	//此处 会不会与编译器有关暂待考量
+
+
+	//****************执行顺序
+	//int aa = 10;
+	//int cc = ++aa--; //竟然 不能这样写
+	//std::cout << cc << std::endl;
+
+	//将判断的值放到右边可以在少写一个=时编译器报错（false == flag）
 
 }
+void func_type_(void (*p) ()){
+	//(*p)('a');
+	//若是 此指针函数没有显示说明带什么类型的参数，则不能随便添加参数
+
+}
+
+
+
 

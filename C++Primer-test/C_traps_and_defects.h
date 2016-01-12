@@ -13,6 +13,7 @@ public:
 	void kinds_technique();
 	void IO_problem();
 	void paramaters_define();
+	void type_cast();
 
 	C_traps_and_defects();
 	~C_traps_and_defects();
