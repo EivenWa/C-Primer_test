@@ -143,6 +143,11 @@ void C_traps_and_defects::IO_problem(){
 	
 }
 
+#define MAX(a,b)\
+	auto temp1 = a,temp2 = b;\
+	b = temp1>temp2?temp1:temp2;
+
+
 void C_traps_and_defects::paramaters_define(){
 
 	//不要随便用++i，i++之类的作为宏的参数传递
@@ -151,7 +156,9 @@ void C_traps_and_defects::paramaters_define(){
 	//在有宏参与的if语句要严格格式，不能偷工减料（大括号之类的东东）
 
 	//类型定义还是要用typedef，不要用define
-
+	float a = 10.2, b = 5.5;
+	MAX(++a, b);
+	std::cout << b;//11.2
 }
 
 void C_traps_and_defects::type_cast(){
@@ -184,6 +191,8 @@ void func_type_(void (*p) ()){
 	//若是 此指针函数没有显示说明带什么类型的参数，则不能随便添加参数
 
 }
+
+
 
 
 
