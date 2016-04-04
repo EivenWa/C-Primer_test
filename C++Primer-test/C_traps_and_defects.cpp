@@ -70,6 +70,15 @@ void C_traps_and_defects::default_data(){
 	aa_int = cc<<1;
 	printf("%x,%x", cc, aa_int); //VS signed char右移，符号位不变
 
+	//--------------just test for ++ 
+	int arr_arr[3] = { 1, 2, 3 };
+	int *p = arr_arr;
+	std::cout << "*p++:" << *p++ << std::endl;
+	//执行顺序是从又往左的，但是问题是：++操作的延后使*操作取的p的还是原来p的值
+	std::cout << "*(p++):" << *(p++) << std::endl;
+	int offset = 0;
+	std::cout << "arr_arr[offset++]:" << arr_arr[offset++] << std::endl;
+
 }
 
 

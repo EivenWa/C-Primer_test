@@ -21,7 +21,9 @@ int main(){
 	Primer_test prit;
 	//prit.parameter();
 	//prit.function();
-	prit.class_test();
+	//prit.class_test();
+	//prit.container();
+	prit.generic_algorithm();
 
 	int test_init{ 10 };//原来这种表示方法不仅仅表现在对类的成员变量中
 	//大括号看不懂了的时候可以看成是一个=试一试
